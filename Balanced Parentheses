@@ -1,0 +1,22 @@
+s = input()
+
+stack = []
+pairs = {
+    ')': '(',
+    '}': '{',
+    ']': '['
+}
+
+balanced = True
+
+for ch in s:
+    if ch in '([{':
+        stack.append(ch)
+    elif not stack or stack.pop() != pairs[ch]:
+        balanced = False
+        break
+
+if stack:
+    balanced = False
+
+print("YES" if balanced else "NO")
